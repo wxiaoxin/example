@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.king.example.dao.mapper.StudentMapper">
+
+    <sql id="BASE_COLUMN">
+        name, age, status, create_time, update_time
+    </sql>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="Student">
+        INSERT INTO student( <include refid="BASE_COLUMN" /> )
+        VALUES ( #{name}, #{age}, #{status}, NOW(), NOW() )
+    </insert>
+
+
+    <select id="getById" resultType="java.util.Map">
+        SELECT id, <include refid="BASE_COLUMN" />
+        FROM student
+    </select>
+
+</mapper>
