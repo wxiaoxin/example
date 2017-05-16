@@ -24,6 +24,10 @@ public class StudentServiceImpl implements StudentService {
                 .name(studentDTO.getName())
                 .status(studentDTO.getStatus().getValue())
                 .build();
-        return studentMapper.insert(student);
+        int row = studentMapper.insert(student);
+
+        int i = 1 / 0;
+
+        return row;
     }
 }
